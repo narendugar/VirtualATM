@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private var currentNotificationID = 0
-    private val notificationTitle: String? = "Authorize Card"
-    private val notificationText: String? = "Authorize ATM Card"
+    private val notificationTitle: String? = "ATM Banking"
+    private val notificationText: String? = "Please authorize ATM Card"
     private var icon: Bitmap? = null
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val atmPushButton = findViewById<Button>(R.id.atm_insert_button)
-        icon = BitmapFactory.decodeResource(this.resources, R.mipmap.ic_launcher);
+        icon = BitmapFactory.decodeResource(this.resources, R.drawable.ic_banking);
         atmPushButton.setOnClickListener {
             sendNotification()
         }
@@ -54,12 +54,12 @@ class MainActivity : AppCompatActivity() {
             notificationBuilder = Notification.Builder(this, channelId)
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationText)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_banking)
                 .setLargeIcon(icon)
                 .setContentIntent(pendingIntent)
         } else {
             notificationBuilder = Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_banking)
                 .setLargeIcon(icon)
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationText)
