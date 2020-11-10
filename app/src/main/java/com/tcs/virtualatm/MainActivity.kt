@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var currentNotificationID = 0
+    private var currentNotificationID = 1000
     private val notificationTitle: String? = "ATM Banking"
     private val notificationText: String? = "Please authorize ATM Card"
     private var icon: Bitmap? = null
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 .setContentText(notificationText)
                 .setSmallIcon(R.drawable.ic_banking)
                 .setLargeIcon(icon)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
         } else {
             notificationBuilder = Notification.Builder(this)
@@ -63,12 +64,13 @@ class MainActivity : AppCompatActivity() {
                 .setLargeIcon(icon)
                 .setContentTitle(notificationTitle)
                 .setContentText(notificationText)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
         }
 
-        currentNotificationID++
+       // currentNotificationID++
         var notificationId = currentNotificationID
-        if (notificationId == Int.MAX_VALUE - 1) notificationId = 0
+        //if (notificationId == Int.MAX_VALUE - 1) notificationId = 0
         notificationManager.notify(notificationId, notificationBuilder.build())
     }
 }
